@@ -166,7 +166,7 @@ class Player extends DataObject
       'Birthday' => 'Date',
    ];
    private static $has_one = [
-      'Team' => 'FootballTeam'
+      'Team' => FootballTeam::class
    ];
 }
 ```
@@ -182,7 +182,7 @@ class FootballTeam extends DataObject
       'Title' => 'Text',
    ];
    private static $has_many = [
-      'Players' => 'Player'
+      'Players' => Player::class
    ];
 }
 ```
@@ -237,10 +237,10 @@ use SilverStripe\Admin\ModelAdmin;
 class PlayerAdmin extends ModelAdmin 
 {
    private static $managed_models = [
-      'Player'
+      Player::class
    ];
    private static $model_importers = [
-      'Player' => 'PlayerCsvBulkLoader',
+      Player::class => PlayerCsvBulkLoader::class,
    ];
    private static $url_segment = 'players';
 }
